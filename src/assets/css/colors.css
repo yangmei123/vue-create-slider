@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-04-28 11:10:04
+ * @version $Id$
+ */
+:root {
+  --color-black: rgb(0,0,0);
+  --color-blue: #32c7ff;
+  --color-black: #000;
+  --color-white: #fff;
+}

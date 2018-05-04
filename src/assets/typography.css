@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-04-28 11:10:04
+ * @version $Id$
+ */
+:root {
+  --font-text: "微软雅黑", sans-serif;
+  --font-sixe-12: 12px;
+  --font-weight: bold;
+  --line-height: 1.5;
+}
