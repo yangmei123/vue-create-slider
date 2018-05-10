@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import navigat from '../components/navigat/navigat'
-import prevnext from '../components/prevnext/prevnext'
+import navigat from '../components/navigat/navigat';
+import prevnext from '../components/prevnext/prevnext';
 export default {
   name: 'slider',
   props: ['data', 'slideItem'],
@@ -24,7 +24,7 @@ export default {
       sliderData: this.data,
       sliderIndex: 0,
       sliderLength: this.slideItem.length
-    }
+    };
   },
 
   components: {
@@ -33,40 +33,40 @@ export default {
   },
 
   created () {
-    this.imageData[0].isActive = true
+    this.imageData[0].isActive = true;
   },
 
   mounted () {
     this.$nextTick(function () {
-      this.slideStart()
-    })
+      this.slideStart();
+    });
   },
 
   methods: {
     slideStart () {
-      const sliderLength = this.sliderLength
-      let index = this.sliderIndex
+      const sliderLength = this.sliderLength;
+      let index = this.sliderIndex;
       this.timer = setInterval(() => {
-        index = index === sliderLength ? 0 : index
+        index = index === sliderLength ? 0 : index;
         this.imageData.forEach((data, i) => {
-          index === i ? this.$set(this.imageData[i], 'isActive', true) : this.$set(this.imageData[i], 'isActive', false)
-        })
-        this.sliderIndex = index
-        index++
-      }, this.sliderData.time)
+          index === i ? this.$set(this.imageData[i], 'isActive', true) : this.$set(this.imageData[i], 'isActive', false);
+        });
+        this.sliderIndex = index;
+        index++;
+      }, this.sliderData.time);
     },
     clickSliderBtn (type) {
-      const sliderLength = this.sliderLength
-      clearInterval(this.timer)
-      this.sliderIndex = type === 'left' ? (this.sliderIndex === 0 ? sliderLength - 1 : --this.sliderIndex) : this.sliderIndex === sliderLength - 1 ? 0 : ++this.sliderIndex
-      this.slideStart()
+      const sliderLength = this.sliderLength;
+      clearInterval(this.timer);
+      this.sliderIndex = type === 'left' ? (this.sliderIndex === 0 ? sliderLength - 1 : --this.sliderIndex) : this.sliderIndex === sliderLength - 1 ? 0 : ++this.sliderIndex;
+      this.slideStart();
     }
   },
 
   destroyed () {
-    clearInterval(this.timer)
+    clearInterval(this.timer);
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

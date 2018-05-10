@@ -2,15 +2,20 @@
   <div>
     <p v-if="!isSlider"><router-link to="/slider" class="btn next">使用v:show的方式显示轮播图</router-link></p>
     <p v-if="isSlider"><router-link to="/sliderComputed" class="btn next">使用computed方法显示轮播图</router-link></p>
+    <p v-if="!isSliderState"><router-link to="/sliderState" class="btn next">使用state方法显示轮播图</router-link></p>
     <slider v-if="isSlider" :slide-item="imageData" :data="sliderData" />
     <slider v-if="isSlider" :slide-item="imageSecond" :data="sliderSecond" />
-    <slider-computed v-if="!isSlider" :slide-item="imageData" :data="sliderData" />
+    <slider-computed v-if="!isSlider && !isSliderState" :slide-item="imageData" :data="sliderData" />
+    <slider-state v-if="isSliderState" :slide-item="sliders" :data="sliderData" ></slider-state>
   </div>
 </template>
 
 <script>
-import slider from '../components/slider'
-import sliderComputed from '../components/sliderComputed'
+import { mapGetters } from 'vuex';
+import slider from '../components/slider';
+import sliderComputed from '../components/sliderComputed';
+import sliderState from '../components/sliderState';
+
 export default {
   name: 'silder-wrap',
   data () {
@@ -48,22 +53,29 @@ export default {
         time: 3000
       },
       isSlider: true
-    }
+    };
   },
   components: {
     slider,
-    sliderComputed
+    sliderComputed,
+    sliderState
   },
+  computed: mapGetters({
+    sliders: 'allSliders'
+  }),
   created () {
-    this.isSlider = this.$route.path === '/slider'
+    this.isSlider = this.$route.path === '/slider';
+    this.isSliderState = this.$route.path === '/sliderState';
+    this.$store.dispatch('getAllSliders');
   },
   watch: {
     '$route' (to, from) {
-      this.isSlider = this.$router.currentRoute.path === '/slider'
+      this.isSlider = this.$router.currentRoute.path === '/slider';
+      this.isSliderState = this.$router.currentRoute.path === '/sliderState';
     }
   }
 
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

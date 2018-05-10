@@ -15,17 +15,17 @@ export default {
     return {
       prevnextData: this.data,
       sindex: this.slider
-    }
+    };
   },
   created () {
   },
   methods: {
     sliderChangeIndex (type, event) {
       // 修改父组件值
-      this.$emit('sliderChangeIndex', type)
+      this.$emit('sliderChangeIndex', type);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

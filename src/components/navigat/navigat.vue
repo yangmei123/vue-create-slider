@@ -1,5 +1,5 @@
 <template>
-  <div class="navigat" v-show="navigatData.navigatShow"><span v-for="(n, index) in imageItem" :key="index" :class="{ active: index == sliderIndex }"></span></div>
+  <div class="navigat" v-show="navigatData.navigatShow"><span v-for="(n, index) in imageData" :key="index" :class="{ active: index == sliderIndex }"></span></div>
 </template>
 
 <script>
@@ -11,18 +11,18 @@ export default {
       navigatData: this.data,
       imageItem: this.imageData,
       sliderIndex: this.slider
-    }
+    };
   },
   created () {
   },
   watch: {
     slider: {
       handler: function (val, oldVal) {
-        this.sliderIndex = this.slider
+        this.sliderIndex = this.slider;
       }
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
