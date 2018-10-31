@@ -23,6 +23,7 @@ const actions = {
 };
 
 // mutations
+// 更改state的唯一方法就是提交mutations
 const mutations = {
   setSliders (state, sliders) {
     state.all = sliders;

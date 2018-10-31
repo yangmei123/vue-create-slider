@@ -66,6 +66,8 @@ export default {
   created () {
     this.isSlider = this.$route.path === '/slider';
     this.isSliderState = this.$route.path === '/sliderState';
+    // 初始化state数据
+    // 通过dispatch触发action，aciton去调用触发mutation进行修改
     this.$store.dispatch('getAllSliders');
   },
   watch: {
